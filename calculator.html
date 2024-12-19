@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Электромобиль</title>
+    <link rel="icon" type="image/jpg" href="img/car.jpg">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: rgba(0, 0, 0, 0.76);
+        }
+        .calculator {
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            padding: 10px;
+            width: 300px;
+            text-align: center;
+        }
+        input, button, select {
+            margin: 10px 0;
+            padding: 10px;
+            width: calc(100% - 22px); 
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        button {
+            background-color: #28a745;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #218838;
+        }
+    </style>
+</head>
+<body>
+    <div class="calculator">
+        <h1>Калькулятор аренды</h1>
+        
+        <label for="carModel">Выберите автомобиль:</label>
+        <select id="carModel">
+            <option value="17">Volkswagen ID.4 - 17 руб/минута</option>
+            <option value="49">Tesla Model Y - 49 руб/минута</option>
+            <option value="21">Skywell ET5 - 21 руб/минута</option>
+            <option value="19">Volkswagen ID.6 - 19 руб/минута</option>
+        </select>
+
+        <label for="minutes">Количество минут:</label>
+        <input type="number" id="minutes" min="1" value="1">
+
+        <button id="calculateBtn">Рассчитать стоимость</button>
+        
+        <h2 id="totalCost">Итого: 0 руб.</h2>
+    </div>
+
+    <script>
+        document.getElementById("calculateBtn").addEventListener("click", function() {
+            const selectedCarPrice = document.getElementById("carModel").value;
+            const hours = document.getElementById("minutes").value;
+
+            const totalCost = selectedCarPrice * hours;
+            document.getElementById("totalCost").innerText = `Итого: ${totalCost} руб.`;
+        });
+    </script>
+</body>
+</html>
